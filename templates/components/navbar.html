@@ -1,0 +1,114 @@
+<!-- Font Awesome -->
+<head>
+    {%load static %}
+    <link href="{% static 'images/favicon.ico'%}" rel="shortcut icon" type="image/x-icon">
+    <link href="{% static 'images/webclip.png'%}" rel="apple-touch-icon">
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- MDB -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    @media (max-width: 1000px) { 
+      .mb-2 {
+        width: 75px;
+        height: 23;
+      }
+      .navbar{
+        padding-bottom: 100px;
+      }
+  }
+  </style>
+  
+  <!-- Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid justify-content-between">
+      <!-- Left elements -->
+        <!-- Brand -->
+        <div class="container border-bottom padding-bottom:50px">
+          <a href = '/'>
+          <img class="mb-2" src="{% static 'images/cpalogo.jpg'%}"alt="" width="150"
+              height="46">
+          </a>
+      <div class="col-md-3 nav-link">
+          <h7 ><a class="text-dark" href="/">Tokenized Fractional Real Estate</a></h7>
+      </div>
+  
+      <!-- Right elements -->
+      <ul class="navbar-nav flex-row">
+      {% if request.user.is_authenticated %}
+          <script
+          type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.js"
+          ></script>
+        <li class="nav-item me-3 me-lg-1">
+          <a class="nav-link d-sm-flex align-items-sm-center" href="/">
+              <i class="fas fa-user-alt"></i>
+            <strong class="d-none d-sm-block ms-1">@owner</strong>
+          </a>
+        </li>
+        <li class="nav-item dropdown me-3 me-lg-1">
+  
+          <!-- <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdownMenuLink"
+          > -->
+          <li>
+              <a class="dropdown-item" href="#">Unanswered Questions</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Question Results</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown me-3 me-lg-1">
+          <a
+            class="nav-link dropdown-toggle hidden-arrow"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="fas fa-chevron-circle-down fa-lg"></i>
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdownMenuLink"
+          >
+          <li>
+          <a class="dropdown-item" href="{% url "accounts:profile" %}">Dashboard</a>
+          </li>
+          <li>
+          <a class="dropdown-item" href="{% url "accounts:edit" %}">Edit Profile</a>
+          </li>
+          <li>
+          <a class="dropdown-item" href="{% url "password_change" %}">Change Password</a>
+          </li>
+          <li>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url "logout" %}">Logout</a>
+          </div>
+      </li>
+          </ul>
+        </li>
+      </ul>
+      <!-- Right elements -->
+      {% else %}
+      <nav>
+          <a class="p-2 text-dark" href="{% url "accounts:register" %}">Register</a>
+          <a class="p-2 text-dark" href="{% url "login" %}">Login</a>
+      </nav>
+      {% endif %}
+  
+    </div>
+  </nav>

@@ -1,0 +1,43 @@
+{% extends "../base.html" %}
+{% block title %}Log-in{% endblock %}
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<script>
+    window.location.href = '{% url "accounts:profile" %}';
+</script>
+{% endif %}
+
+<body>
+    {% load static %}
+
+    <div class="container-2 w-container">
+      <div class="columns-6 w-row">
+        <div class="column-12 w-col w-col-6">
+          <div class="div-block-7">
+        <h1>Sign In</h1>
+        <div class="w-form">
+        <form class="account-form p-4 rounded" action="{% url 'login' %}" method="post">     
+          {% csrf_token %}     
+          <label for="name">{{ form.username.label}}</label>                                
+          {{ form.username}}
+          <label for="email">Password</label>
+          {{ form.password}}
+          <br>
+          <input type="submit" value="Log-In" data-wait="Please wait..." class="w-button">
+        </form>
+          {% if form.errors %}
+          <div class="w-form-fail">
+            <div>Error: Username or Password not correct!</div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="column-14 w-col w-col-6">
+    <div class="div-block-8"><img src="{% static 'images/cubes.gif'%}" alt="" class="hero-image-2"></div>
+    </div>
+</div>
+</div>
+</body>
+{% endblock %}
