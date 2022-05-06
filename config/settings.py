@@ -200,10 +200,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
 )
 
-STATIC_ROOT = BASE_DIR / "staticfiles-cdn" # in production, we want cdn
+STATIC_ROOT = BASE_DIR +"/staticfiles-cdn" # in production, we want cdn
 
 
-MEDIA_ROOT = BASE_DIR / "staticfiles-cdn" / "uploads"
+MEDIA_ROOT = BASE_DIR +"/staticfiles-cdn/uploads"
 
 from .cdn.conf import * # noqa
 
